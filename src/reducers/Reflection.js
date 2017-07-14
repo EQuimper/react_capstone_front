@@ -1,10 +1,29 @@
-import {ADD_REFLECTION } from '../actions/Reflection';
+import uuid from 'uuid/v4';
+import { ADD_REFLECTION, CREATE_GOAL } from '../actions/Reflection';
 
-export default (state = [], action ) => {
+const initialState = {
+  reflections: [],
+  goalsContainer: []
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_REFLECTION:
-      return [...state, action.ref]
-    default: 
-    return state;
+      return {
+        reflections: [
+          ...state.reflections,
+          { reflectionContent: action.ref, id: uuid() }
+        ]
+      };
+
+    case CREATE_GOAL:
+      return {
+        ...state,
+        goalsContainer:[...state.goalsContainer, action.goal]
+        
+      };
+
+    default:
+      return state;
   }
-}
+};

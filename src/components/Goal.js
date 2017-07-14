@@ -7,10 +7,17 @@ class Goal extends Component {
   
   
   render() {
+    const {goal} = this.props;
     return (
-      <div>
-        <Reflection />
-      </div>
+      <div > 
+          <h1>{goal.goalName}</h1>
+          <Reflection goalId={goal.id}/>
+          {goal.reflections.map(ref =>(
+            <li key={ref.id}>
+            <h2>{ref.name}</h2>
+            </li>
+          ))}
+          </div>
     );
   }
 }

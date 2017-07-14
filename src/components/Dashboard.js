@@ -16,7 +16,6 @@ class Dashboard extends Component {
     this.setState({
       goalName: e.target.value
     })
-
   }
   
   submitGoal = (e) => {
@@ -27,7 +26,6 @@ class Dashboard extends Component {
       this.setState({
         goalName: ''
       })
-
   }
   
   render() {
@@ -40,15 +38,7 @@ class Dashboard extends Component {
 
         <ul>
         {this.props.reflection.goals.map( (goal, i) =>(
-          <div key={i}> 
-          <h1>{goal.goalName}</h1>
-          <Reflection goalId={goal.id}/>
-          {goal.reflections.map(ref =>(
-            <li key={ref.id}>
-            <h2>{ref.name}</h2>
-            </li>
-          ))}
-          </div>
+          <Goal key={goal.id} goal={goal}/>
         ))}
         </ul>
 

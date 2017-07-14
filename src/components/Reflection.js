@@ -20,7 +20,7 @@ class Reflection extends Component {
   onSubmitReflection = (e) => {
     e.preventDefault();
 
-    this.props.addReflection(this.state.reflection);
+    this.props.addReflection(this.state.reflection, this.props.goalId);
 
     this.setState({
       reflection: ''

@@ -2,25 +2,40 @@ import uuid from 'uuid/v4';
 import { ADD_REFLECTION, CREATE_GOAL } from '../actions/Reflection';
 
 const initialState = {
-  reflections: [],
-  goalsContainer: []
+  goals: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_REFLECTION:
       return {
-        reflections: [
-          ...state.reflections,
-          { reflectionContent: action.ref, id: uuid() }
-        ]
+        ...state,
+        goals: state.goals.map(goal => 
+          goal.id === action.goalId ?
+            {
+              ...goal,
+              reflections: [
+                ...goal.reflections,
+                {
+                  name: action.name,
+                  date: Date.now(),
+                  id: uuid()
+                }
+              ]
+            }: goal)
       };
 
     case CREATE_GOAL:
       return {
         ...state,
-        goalsContainer:[...state.goalsContainer, action.goal]
-        
+        goals: [
+          ...state.goals,
+          {
+            goalName: action.name,
+            id: uuid(),
+            reflections: []
+          }
+        ]
       };
 
     default:

@@ -1,17 +1,18 @@
 export const ADD_REFLECTION = "ADD_REFLECTION";
 
-export function addReflection(ref) {
+export function addReflection(name, goalId) {
   return {
     type: ADD_REFLECTION,
-    ref
+    name,
+    goalId
   }
 }
 
 export const CREATE_GOAL = "CREAT_GOAL";
 
-export function createGoal(goal){
+export function createGoal(name){
   return{
     type: CREATE_GOAL,
-    goal
+    name
   }
 }

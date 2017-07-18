@@ -2,7 +2,8 @@ import uuid from 'uuid/v4';
 import { CREATE_GOAL, ADD_REFLECTION } from '../actions/goal';
 
 const initialState = {
-  goals: []
+  goals: [],
+  isLogged: false
 };
 
 export default (state = initialState, action) => {
@@ -14,7 +15,7 @@ export default (state = initialState, action) => {
           ...state.goals,
           {
             goalName: action.name,
-            id: uuid(),
+            id: action._id,
             reflections: []
           }
         ]

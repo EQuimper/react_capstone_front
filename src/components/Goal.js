@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reflection from './Reflection';
+import '../App.css';
 
 class Goal extends Component {
   render() {

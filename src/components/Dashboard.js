@@ -1,50 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Goal from './Goal';
-// import goalForm from './goalForm';
+import { createGoal } from '../actions/goal';
 import Goal from './Goal';
-import Reflection from './Reflection';
-import { createGoal } from '../actions/Reflection';
+
+import '../App.css';
 
 class Dashboard extends Component {
   state = {
     goalName: ''
   };
 
-  changeGoalName = e => {
+  onChange = e => {
     this.setState({
       goalName: e.target.value
     });
   };
 
-  submitGoal = e => {
+  onSubmit = e => {
     e.preventDefault();
-
     this.props.createGoal(this.state.goalName);
-
     this.setState({
       goalName: ''
     });
   };
 
+  renderGoals() {
+    return this.props.goalState.goals.map(goal =>
+      <Goal key={goal.id} goal={goal} />
+    );
+  }
+
   render() {
     return (
-      <div>
-        <form onSubmit={this.submitGoal} action="">
+      <div className="dashboard">
+        <form action="" onSubmit={this.onSubmit}>
           <input
-            onChange={this.changeGoalName}
+            onChange={this.onChange}
             type="text"
-            placeholder="create a goal"
+            placeholder="enter a goal"
             value={this.state.goalName}
           />
-          <button type="submit">Submit a goal</button>
+          <button type="submit">Create a Goal</button>
         </form>
-
-        <ul>
-          {this.props.reflection.goals.map((goal, i) =>
-            <Goal key={goal.id} goal={goal} />
-          )}
-        </ul>
+        <div>
+          {this.renderGoals()}
+        </div>
       </div>
     );
   }
@@ -52,7 +52,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    reflection: state.reflection
+    goalState: state.goal
   };
 }
 

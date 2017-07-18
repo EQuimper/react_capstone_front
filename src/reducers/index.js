@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import reflection from './Reflection';
+import goal from './goal';
 export default combineReducers({
-  reflection
+  goal
 })

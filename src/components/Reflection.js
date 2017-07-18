@@ -1,44 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addReflection } from '../actions/goal';
 
-// import logo from './logo.svg';
 import '../App.css';
-import { addReflection } from '../actions/Reflection';
 
-class Reflection extends Component {
+class Dashboard extends Component {
   state = {
-    reflection: ''
+    reflectionContent: ''
   };
 
-  onChangeReflection = e => {
+  onChange = e => {
     this.setState({
-      reflection: e.target.value
+      reflectionContent: e.target.value
     });
   };
 
-  onSubmitReflection = e => {
+  onSubmit = e => {
     e.preventDefault();
 
-    this.props.addReflection(this.state.reflection, this.props.goalId);
+    this.props.addReflection(this.state.reflectionContent, this.props.goalId);
 
     this.setState({
-      reflection: ''
+      reflectionContent: ''
     });
   };
 
   render() {
     return (
-      <div className="App">
-        <form onSubmit={this.onSubmitReflection}>
+      <div className="reflection">
+        <form action="" onSubmit={this.onSubmit}>
           <input
-            onChange={this.onChangeReflection}
+            onChange={this.onChange}
             type="text"
-            placeholder="add a reflection"
-            value={this.state.reflection}
+            placeholder="enter a reflection"
+            value={this.state.reflectionContent}
           />
-          <button type="submit">Submit a reflection</button>
+          <button type="submit">Create a Goal</button>
         </form>
-        <ul />
+        <div />
       </div>
     );
   }
@@ -46,8 +45,8 @@ class Reflection extends Component {
 
 function mapStateToProps(state) {
   return {
-    container: state.reflection
+    goalState: state.goal
   };
 }
 
-export default connect(mapStateToProps, { addReflection })(Reflection);
+export default connect(mapStateToProps, { addReflection })(Dashboard);

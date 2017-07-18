@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Reflection from './Reflection';
 
 class Goal extends Component {
   render() {
-    const { goal } = this.props;
+    const { goalName, id, reflections } = this.props.goal;
     return (
-      <div>
+      <div className="goalContainer">
         <h1>
-          {goal.goalName}
+          {goalName}
         </h1>
-        <Reflection goalId={goal.id} />
-        {goal.reflections.map(ref =>
-          <li key={ref.id}>
-            <h2>
-              {ref.name}
-            </h2>
-          </li>
-        )}
+        <Reflection goalId={id} />
+        <ul>
+          {reflections.map(ref =>
+            <li key={ref.id}>
+              <h3>
+                {ref.name}
+              </h3>
+            </li>
+          )}
+        </ul>
       </div>
     );
   }
 }
 
-export default connect()(Goal);
+export default Goal;

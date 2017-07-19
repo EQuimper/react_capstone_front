@@ -1,4 +1,4 @@
-import { Goal } from '../utils/api';
+import { Goal, Reflection } from '../utils/api';
 import axios from 'axios';
 
 export const CREATE_GOAL = 'CREAT_GOAL';
@@ -21,23 +21,28 @@ export function createGoal(name) {
 export const ADD_REFLECTION = 'ADD_REFLECTION';
 
 export function addReflection(name, goalId) {
-  return {
-    type: ADD_REFLECTION,
-    name,
-    goalId
-  };
+  return async dispatch => {
+    try {
+      const res = await Reflection.insertReflection(name, goalId)
+      console.log(res)
+      return dispatch({
+        type: ADD_REFLECTION,
+        name,
+        goalId,
+        _id: res.data._id
+      })
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export const LOAD_GOALS = 'LOAD_GOALS';
 
 export function loadGoals() {
   return async dispatch => {
-    dispatch({
-      type: LOAD_GOALS,
-      goals: []
-    })
     try {
-      const res = await axios.get('http:localhost:8080/users/5963816df50e390e1cc182b2');
+      const res = await Goal.getGoal();
       if(res.data)
       return dispatch({
         type: LOAD_GOALS,
@@ -48,3 +53,4 @@ export function loadGoals() {
     }
   };
 }
+

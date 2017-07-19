@@ -26,15 +26,15 @@ export default (state = initialState, action) => {
         ...state,
         goals: state.goals.map(
           goal =>
-            goal.id === action.goalId
+            goal._id === action.goalId
               ? {
                   ...goal,
                   reflections: [
                     ...goal.reflections,
                     {
-                      name: action.name,
+                      reflection_content: action.name,
                       date: Date.now(),
-                      id: uuid()
+                      _id: action._id
                     }
                   ]
                 }
@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
       case LOAD_GOALS:
       return {
         ...state,
-        goals: [...state.goals, action.goals]
+        goals: [...state.goals, ...action.goals]
       } 
 
     default:

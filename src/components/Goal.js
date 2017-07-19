@@ -4,18 +4,18 @@ import '../App.css';
 
 class Goal extends Component {
   render() {
-    const { goalName, id, reflections } = this.props.goal;
+    const { goal_name, _id, reflections } = this.props.goal;
     return (
       <div className="goalContainer">
         <h1>
-          {goalName}
+          {goal_name}
         </h1>
-        <Reflection goalId={id} />
+        <Reflection goalId={_id} />
         <ul>
           {reflections.map(ref =>
-            <li key={ref.id}>
+            <li key={ref._id}>
               <h3>
-                {ref.name}
+                {ref.reflection_content}
               </h3>
             </li>
           )}

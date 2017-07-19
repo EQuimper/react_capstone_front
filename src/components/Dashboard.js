@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createGoal, loadGoals } from '../actions/goal';
+import { createGoal, loadGoals, addReflection } from '../actions/goal';
 import Goal from './Goal';
 
 import '../App.css';
@@ -14,7 +14,7 @@ componentDidMount(){
   const myFunction = () => {
     console.log('something')
   }
-    loadGoals();
+    this.props.loadGoals();
   myFunction();
 }
 
@@ -64,4 +64,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createGoal, loadGoals })(Dashboard);
+export default connect(mapStateToProps, { createGoal, loadGoals, addReflection })(Dashboard);

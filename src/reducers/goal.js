@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import { CREATE_GOAL, ADD_REFLECTION } from '../actions/goal';
+import { CREATE_GOAL, ADD_REFLECTION, LOAD_GOALS } from '../actions/goal';
 
 const initialState = {
   goals: [],
@@ -41,6 +41,12 @@ export default (state = initialState, action) => {
               : goal
         )
       };
+
+      case LOAD_GOALS:
+      return {
+        ...state,
+        goals: [...state.goals, action.goals]
+      } 
 
     default:
       return state;

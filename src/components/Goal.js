@@ -4,7 +4,6 @@ class Goal extends Component {
   render(){
     return( 
       <div>
-      I'm a goal wooo
       </div>
     )
   }

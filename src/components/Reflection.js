@@ -27,7 +27,7 @@ class Reflection extends Component {
     return(
       <div>
         <form onSubmit={this.onSubmitRef} action="">
-        <input onChange={this.onChangeRef} type="text" placeholder="add a reflection"/>
+        <input onChange={this.onChangeRef} type="text" placeholder="add a reflection" value={this.state.reflectionContent}/>
         <button type="submit">submit a reflection</button>
         </form>
         <div>

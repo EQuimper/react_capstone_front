@@ -1,4 +1,4 @@
-import { ADD_GOAL, ADD_REFLECTION } from '../actions/goal';
+import { ADD_GOAL, ADD_REFLECTION, LOAD_GOALS } from '../actions/goal';
 import uuid from 'uuid';
 
 const initialState = {
@@ -13,8 +13,8 @@ export default (state = initialState, action) => {
         goals: [
           ...state.goals,
           {
-            id: action._id,
-            goalName: action.goalName,
+            _id: action._id,
+            goal_name: action.goal_name,
             reflections: []
           }
         ]
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         ...state,
         goals: state.goals.map(
           goal =>
-            goal.id === action.goalId
+            goal._id === action.goalId
               ? {
                   ...goal,
                   reflections: [
@@ -33,13 +33,19 @@ export default (state = initialState, action) => {
                     {
                       reflection_content: action.ref,
                       date: Date.now(),
-                      id: uuid.v4(),
+                      _id: action._id,
                       goal_id: action.goalId
                     }
                   ]
                 }
               : goal
         )
+      };
+
+      case LOAD_GOALS:
+      return{
+        ...state,
+        goals:[...state.goals, ...action.goalsArray ]
       };
 
     default:

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGoal } from '../actions/goal';
+import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
 import '../App.css';
 
@@ -10,6 +10,9 @@ class Dashboard extends Component {
     goalName: '',
   }
 
+  componentDidMount(){
+    this.props.loadGoals()
+  }
   onChangeGoal = (e) => {
     this.setState({
       goalName: e.target.value
@@ -56,4 +59,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {addGoal})(Dashboard);
+export default connect(mapStateToProps, {addGoal, loadGoals})(Dashboard);

@@ -14,6 +14,23 @@ class GoalApi {
       goal_name: data.goal_name
     })
   }
+
+  loadGoal(){
+    return axios.get('/users/5963816df50e390e1cc182b2')
+  }
+}
+
+class ReflectionApi {
+  constructor(){
+    this.path = '/reflections'
+  }
+
+  insertReflection(data, goalId){
+    return axios.post(`${this.path}/${goalId}`,{
+      reflection_content: data
+    })
+  }
 }
 
 export const Goal = new GoalApi();
+export const Reflection = new ReflectionApi();

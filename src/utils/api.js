@@ -10,8 +10,13 @@ class GoalApi {
   }
 
   insertGoal(data){
+
     return axios.post(this.path, {
       goal_name: data.goal_name
+    }, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
     })
   }
 
@@ -32,5 +37,16 @@ class ReflectionApi {
   }
 }
 
+class UserApi {
+  constructor(){
+    this.path = '/api'
+  }
+
+  registerUser(userInput){
+    return axios.post(`${this.path}/register`, userInput)
+  }
+}
+
 export const Goal = new GoalApi();
 export const Reflection = new ReflectionApi();
+export const User = new UserApi();

@@ -39,8 +39,14 @@ class Dashboard extends Component {
 
 
   render(){
+    if(this.props.isLogged){
+      return <h1>I'm Logged</h1>
+    } 
     return(
+      
+      
       <div className="dashboard">
+  
       <h1>Get ready to rumble</h1>
       <form onSubmit={this.onSubmitGoal} action="">
       <input onChange={this.onChangeGoal} type="text" placeholder="add a goal" value={this.state.goalName}/>
@@ -61,7 +67,8 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return{
-    appStore: state.goal
+    appStore: state.goal,
+    isLogged: state.user.isLogged
   }
 }
 

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { login } from '../actions/user';
 
 class Login extends Component {
 
   state = {
     username: '',
     email: '',
-    password: '',
-    loggedIn: false
+    password: ''
   }
 
   onChangeUser = e => {
@@ -30,10 +31,15 @@ class Login extends Component {
   onSubmitLogin = e => {
     e.preventDefault();
 
+    this.props.login(this.state)
+
     console.log('boom')
   }
 
+
+
   render(){
+    console.log(localStorage.getItem("user"));
     return(
       <div>
       <form onSubmit={this.onSubmitLogin} action="">
@@ -47,4 +53,10 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export function mapStateToProps(state){
+  return {
+  appStore: state.user
+  }
+}
+
+export default connect(mapStateToProps, {login})(Login);

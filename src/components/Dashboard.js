@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
+import Login from './Login';
 import '../App.css';
 
 class Dashboard extends Component {
@@ -47,6 +48,11 @@ class Dashboard extends Component {
       </form>
       <div>
       {this.renderGoals()}
+      </div>
+
+      <div>
+      <h1>Login Screen</h1>
+      <Login/>
       </div>
       </div>
     )

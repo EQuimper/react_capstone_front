@@ -1,4 +1,9 @@
-import {LOGIN, LOGIN_SUCCESS, LOGIN_ERROR} from '../actions/user';
+import {REGISTER
+  , REGISTER_SUCCESS
+  , REGISTER_ERROR
+  , LOGIN
+  , LOGIN_ERROR
+  , LOGIN_SUCCESS} from '../actions/user';
 const info = localStorage.getItem('user');
 
 const initialState = {
@@ -11,7 +16,27 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case 'REGISTER':
+      return {
+        ...state,
+        loading: true,
+      }
+    case 'REGISTER_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        isLogged: true,
+        info: action.data
+      };
+      
+    case 'REGISTER_ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: action.error
+      }
+
+          case 'LOGIN':
       return {
         ...state,
         loading: true,

@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
-import Login from './Login'
+import Register from './Register'
+import Navbar from './Navbar';
 
 class Home extends Component {
 
   renderApp(){
     if(this.props.isLogged){
       return <Dashboard/>
-    } return <Login/>
+    } return <Register/>
   }
   
   render(){
     return(
       <div>
+      <Navbar/>
       {this.renderApp()}
       </div>
     )

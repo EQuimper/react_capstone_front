@@ -6,7 +6,7 @@ axios.defaults.baseURL = baseURL;
 
 class GoalApi {
   constructor(){
-    this.path = '/goals/5963816df50e390e1cc182b2'
+    this.path = '/goals/596382a77054b80ad400aec5'
   }
 
   insertGoal(data){
@@ -21,7 +21,7 @@ class GoalApi {
   }
 
   loadGoal(){
-    return axios.get('/users/5963816df50e390e1cc182b2')
+    return axios.get('/users/596382a77054b80ad400aec5')
   }
 }
 
@@ -44,6 +44,10 @@ class UserApi {
 
   registerUser(userInput){
     return axios.post(`${this.path}/register`, userInput)
+  }
+
+  loginUser(userInput){
+    return axios.post(`${this.path}/login`, userInput)
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
-import Login from './Login';
+import Register from './Register';
 import '../App.css';
 
 class Dashboard extends Component {

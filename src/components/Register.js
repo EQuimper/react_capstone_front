@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { login } from '../actions/user';
+import { register } from '../actions/user';
 import '../App.css';
 
-class Login extends Component {
+class Register extends Component {
 
   state = {
     username: '',
+    email: '',
     password: ''
   }
 
   onChangeUser = e => {
     this.setState({
       username: e.target.value
+    })
+  }
+
+  onChangeEmail = e => {
+    this.setState({
+      email: e.target.value
     })
   }
 
@@ -25,7 +32,7 @@ class Login extends Component {
   onSubmitLogin = e => {
     e.preventDefault();
 
-    this.props.login(this.state)
+    this.props.register(this.state)
 
     console.log('boom')
   }
@@ -39,6 +46,7 @@ class Login extends Component {
       <h1>Please Login</h1>
       <form onSubmit={this.onSubmitLogin} action="">
       <input onChange={this.onChangeUser} type="text" placeholder="enter username" value={this.state.username}/>
+      <input onChange={this.onChangeEmail} type="email" placeholder="enter email" value={this.state.email}/>
       <input onChange={this.onChangePassword} type="text" placeholder="enter password" value={this.state.password}/>
       <button type="submit">Register</button>
       </form>
@@ -47,5 +55,10 @@ class Login extends Component {
   }
 }
 
+export function mapStateToProps(state){
+  return {
+  appStore: state.user
+  }
+}
 
-export default connect(mapStateToProps, {login}) (Login);
+export default connect(mapStateToProps, {register})(Register);

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Dashboard from './components/Dashboard';
+import Home from './components/Home';
 
 
 class App extends Component {
   render() {
     return (
-        <Dashboard />
+        <Home />
     )
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { login } from '../actions/user';
+import '../App.css';
 
 class Login extends Component {
 
@@ -41,7 +42,8 @@ class Login extends Component {
   render(){
     console.log(localStorage.getItem("user"));
     return(
-      <div>
+      <div className="dashboard">
+      <h1>Please Login</h1>
       <form onSubmit={this.onSubmitLogin} action="">
       <input onChange={this.onChangeUser} type="text" placeholder="enter username" value={this.state.username}/>
       <input onChange={this.onChangeEmail} type="email" placeholder="enter email" value={this.state.email}/>

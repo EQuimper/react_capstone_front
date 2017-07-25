@@ -1,0 +1,29 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Dashboard from './Dashboard';
+import Login from './Login'
+
+class Home extends Component {
+
+  renderApp(){
+    if(this.props.isLogged){
+      return <Dashboard/>
+    } return <Login/>
+  }
+  
+  render(){
+    return(
+      <div>
+      {this.renderApp()}
+      </div>
+    )
+  }
+}
+
+function mapStateToProps(state){
+  return{
+    isLogged: state.user.isLogged
+  }
+}
+
+export default connect(mapStateToProps)(Home);

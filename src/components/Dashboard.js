@@ -39,12 +39,9 @@ class Dashboard extends Component {
 
 
   render(){
-    if(this.props.isLogged){
-      return <h1>I'm Logged</h1>
-    } 
     return(
       
-      
+    
       <div className="dashboard">
   
       <h1>Get ready to rumble</h1>
@@ -54,11 +51,6 @@ class Dashboard extends Component {
       </form>
       <div>
       {this.renderGoals()}
-      </div>
-
-      <div>
-      <h1>Login Screen</h1>
-      <Login/>
       </div>
       </div>
     )

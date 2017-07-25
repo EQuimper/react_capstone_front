@@ -47,5 +47,10 @@ class Login extends Component {
   }
 }
 
+export function mapStateToProps(state){
+  return {
+  appStore: state.user
+  }
+}
 
 export default connect(mapStateToProps, {login}) (Login);

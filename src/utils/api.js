@@ -49,6 +49,8 @@ class UserApi {
   loginUser(userInput){
     return axios.post(`${this.path}/login`, userInput)
   }
+
+  
 }
 
 export const Goal = new GoalApi();

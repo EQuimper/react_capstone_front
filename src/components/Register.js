@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { register } from '../actions/user';
 import '../App.css';
+import Login from './Login';
 
 class Register extends Component {
 
@@ -50,6 +51,8 @@ class Register extends Component {
       <input onChange={this.onChangePassword} type="text" placeholder="enter password" value={this.state.password}/>
       <button type="submit">Register</button>
       </form>
+      <h1>Login</h1>
+      <Login/>
       </div>
     )
   }

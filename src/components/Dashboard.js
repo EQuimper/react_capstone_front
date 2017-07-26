@@ -6,62 +6,60 @@ import Register from './Register';
 import '../App.css';
 
 class Dashboard extends Component {
-  
   state = {
-    goalName: '',
-  }
+    goalName: ''
+  };
 
-  componentDidMount(){
-    this.props.loadGoals()
+  componentDidMount() {
+    this.props.loadGoals();
   }
-  onChangeGoal = (e) => {
+  onChangeGoal = e => {
     this.setState({
       goalName: e.target.value
-    })
-  }
+    });
+  };
 
-  onSubmitGoal = (e) => {
+  onSubmitGoal = e => {
     e.preventDefault();
 
-    this.props.addGoal(this.state.goalName)
+    this.props.addGoal(this.state.goalName);
 
     this.setState({
       goalName: ''
-    })
-    console.log(this.props.appStore)
+    });
+    console.log(this.props.appStore);
+  };
+
+  renderGoals() {
+    return this.props.appStore.goals.map(goal => <Goal goalContent={goal} />);
   }
 
-  renderGoals(){
-    return this.props.appStore.goals.map(goal=>(
-      <Goal goalContent={goal}/>
-    ))
-  }
-
-
-  render(){
-    return(
-      
-    
+  render() {
+    return (
       <div className="dashboard">
-  
-      <h1>Get ready to rumble</h1>
-      <form onSubmit={this.onSubmitGoal} action="">
-      <input onChange={this.onChangeGoal} type="text" placeholder="add a goal" value={this.state.goalName}/>
-      <button type="submit">Submit a goal</button>
-      </form>
-      <div>
-      {this.renderGoals()}
+        <h1>Get ready to rumble</h1>
+        <form onSubmit={this.onSubmitGoal} action="">
+          <input
+            onChange={this.onChangeGoal}
+            type="text"
+            placeholder="add a goal"
+            value={this.state.goalName}
+          />
+          <button type="submit">Submit a goal</button>
+        </form>
+        <div>
+          {this.renderGoals()}
+        </div>
       </div>
-      </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return{
+  return {
     appStore: state.goal,
     isLogged: state.user.isLogged
-  }
+  };
 }
 
-export default connect(mapStateToProps, {addGoal, loadGoals})(Dashboard);
+export default connect(mapStateToProps, { addGoal, loadGoals })(Dashboard);

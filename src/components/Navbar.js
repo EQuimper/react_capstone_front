@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 
 class Navbar extends Component {
@@ -15,7 +16,9 @@ class Navbar extends Component {
       <div className="cssMenu">
       <nav>
       <ul >
-        <button className="cssItems">Login</button>
+        <Link to="/login">
+        Login
+        </Link>
         <button type="submit" onClick={this.clearCache} className="cssItems">Logout</button>
       </ul>
       </nav>

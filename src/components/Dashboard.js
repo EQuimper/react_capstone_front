@@ -13,6 +13,7 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.loadGoals();
   }
+  
   onChangeGoal = e => {
     this.setState({
       goalName: e.target.value

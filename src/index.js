@@ -7,6 +7,7 @@ import store from './store';
 import './index.css';
 import Home from '../src/components/Home';
 import Login from '../src/components/Login';
+import PrivateRoute from './components/PrivateRoute';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
@@ -14,7 +15,7 @@ ReactDOM.render(
   <BrowserRouter>
   <Switch>
   <Route path="/login" component={Login}></Route>
-  <Route path="/" component={Home}></Route>
+  <PrivateRoute path="/" component={Home}></PrivateRoute>
   </Switch>
   </BrowserRouter>
   </Provider>,

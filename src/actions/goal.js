@@ -45,7 +45,7 @@ export function loadGoals() {
       if (res.data) 
         return dispatch({
           type: LOAD_GOALS,
-          goalsArray: res.data.goals
+          goalsArray: res.data
         });
     } catch (error) {throw error}
   };

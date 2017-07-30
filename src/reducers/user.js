@@ -4,12 +4,12 @@ import {REGISTER
   , LOGIN
   , LOGIN_ERROR
   , LOGIN_SUCCESS} from '../actions/user';
-const info = localStorage.getItem('user');
+const info = localStorage.getItem('token');
 
 const initialState = {
   isLogged: info != null,
   loading: false,
-  info: JSON.parse(info)|| null,
+  token: info,
   error: null
 }
 
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         isLogged: true,
-        info: action.data
+        info: action.data.token
       };
       
     case 'REGISTER_ERROR':

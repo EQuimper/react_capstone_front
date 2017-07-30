@@ -3,11 +3,11 @@ import Reflection from './Reflection';
 
 class Goal extends Component {
   render() {
-    const { goal_name, _id, reflections } = this.props.goalContent;
+    const { title, _id, reflections } = this.props.goalContent;
     return (
       <div>
         <h1>
-          {goal_name}
+          {title}
         </h1>
         <Reflection goalId={_id} />
         <ul>

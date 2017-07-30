@@ -13,7 +13,7 @@ class GoalApi {
     return axios.post(
       this.path,
       {
-        goal_name: data.goal_name
+        title: data.goal_name
       },
       {
         headers: {

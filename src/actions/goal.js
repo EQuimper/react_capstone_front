@@ -6,6 +6,9 @@ export function addGoal(goal_name) {
   return async dispatch => {
     try {
       const { data } = await Goal.insertGoal({ goal_name });
+      console.log('=========================');
+      console.log(data);
+      console.log('=========================');
       return dispatch({
         type: ADD_GOAL,
         goal_name,
@@ -20,19 +23,17 @@ export function addGoal(goal_name) {
 export const ADD_REFLECTION = 'ADD_REFLECTION';
 
 export function addReflection(ref, goalId) {
-  return async dispatch =>{
+  return async dispatch => {
     try {
-      const res = await Reflection.insertReflection(ref, goalId)
+      const res = await Reflection.insertReflection(ref, goalId);
       return dispatch({
-           type: ADD_REFLECTION,
-            ref,
-            goalId,
-            _id: res.data._id
-      })
-    } catch (error) {
-      
-    }
-  }
+        type: ADD_REFLECTION,
+        ref,
+        goalId,
+        _id: res.data._id
+      });
+    } catch (error) {}
+  };
 }
 
 export const LOAD_GOALS = 'LOAD_GOALS';
@@ -41,12 +42,14 @@ export function loadGoals() {
   return async dispatch => {
     try {
       const res = await Goal.loadGoal();
-      console.log("res",res);
-      if (res.data) 
+      console.log('res', res);
+      if (res.data)
         return dispatch({
           type: LOAD_GOALS,
           goalsArray: res.data
         });
-    } catch (error) {throw error}
+    } catch (error) {
+      throw error;
+    }
   };
 }

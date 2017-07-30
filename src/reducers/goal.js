@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
           ...state.goals,
           {
             _id: action._id,
-            goal_name: action.goal_name,
+            title: action.goal_name,
             reflections: []
           }
         ]

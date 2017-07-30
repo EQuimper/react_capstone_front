@@ -32,7 +32,7 @@ class Dashboard extends Component {
   };
 
   renderGoals() {
-    return this.props.appStore.goals.map(goal => <Goal goalContent={goal} />);
+    return this.props.appStore.goals.map(goal => <Goal key={goal._id} goalContent={goal} />);
   }
 
   render() {

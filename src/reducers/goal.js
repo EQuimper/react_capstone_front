@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
                   reflections: [
                     ...goal.reflections,
                     {
-                      reflection_content: action.ref,
+                      reflectionContent: action.ref,
                       date: Date.now(),
                       _id: action._id,
                       goal_id: action.goalId

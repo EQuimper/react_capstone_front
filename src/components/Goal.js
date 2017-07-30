@@ -3,6 +3,7 @@ import Reflection from './Reflection';
 
 class Goal extends Component {
   render() {
+    console.log(reflections)
     const { title, _id, reflections } = this.props.goalContent;
     return (
       <div>
@@ -12,7 +13,7 @@ class Goal extends Component {
         <Reflection goalId={_id} />
         <ul>
         {reflections.map(ref=>
-          <li key={ref.id}>{ref.reflection_content}</li>
+          <li key={ref.id}>{ref.reflectionContent}</li>
         )}
         </ul>
       </div>

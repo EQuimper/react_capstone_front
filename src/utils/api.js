@@ -38,9 +38,17 @@ class ReflectionApi {
   }
 
   insertReflection(data, goalId) {
-    return axios.post(`${this.path}/${goalId}`, {
-      reflection_content: data
-    });
+    return axios.post(
+      `${this.path}/${goalId}`,
+      {
+        reflectionContent: data
+      },
+      {
+        headers: {
+          authorization: localStorage.getItem('token')
+        }
+      }
+    );
   }
 }
 

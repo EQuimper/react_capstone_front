@@ -54,7 +54,8 @@ export default (state = initialState, action) => {
       };
 
     case FETCH_GOAL:
-      return {...state.goals, ...action.payload.data
+      return {...state,
+        ...action.payload.data
       };
 
     default:

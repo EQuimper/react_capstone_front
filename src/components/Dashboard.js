@@ -33,9 +33,13 @@ class Dashboard extends Component {
   };
 
   renderGoals() {
-    return this.props.appStore.goals.map(goal =>
-      <Goal key={goal._id} goalContent={goal} />
-    );
+    if (!this.props.appStore.goals) {
+      return <div>loading</div>;
+    } else {
+      return this.props.appStore.goals.map(goal =>
+        <Goal key={goal._id} goalContent={goal} />
+      );
+    }
   }
 
   render() {
@@ -52,7 +56,7 @@ class Dashboard extends Component {
           />
           <button type="submit">Submit a goal</button>
         </form>
-        <div>
+        <div className="goal-container">
           {this.renderGoals()}
         </div>
       </div>

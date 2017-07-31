@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reflection from './Reflection';
+import { Link } from 'react-router-dom';
 
 class Goal extends Component {
   render() {
@@ -9,9 +10,11 @@ class Goal extends Component {
       return <div>loading</div>
     }
     return (
-      <div>
+      <div className="goal">
         <h1>
-          {title}
+        <Link to={`/goals/${_id}`}>
+        {title}
+        </Link>
         </h1>
         <Reflection goalId={_id} />
         <ul>

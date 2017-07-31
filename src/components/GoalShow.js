@@ -17,13 +17,13 @@ class GoalShow extends Component {
     if(!goal){
       return <div> Loading </div>
     }
-    return <div>{title}</div>;
+    return <div></div>;
   }
 }
 
-function mapStateToProps({singleGoal}) {
+function mapStateToProps({goal}) {
   return {
-    singleGoal
+    goal
   };
 }
 

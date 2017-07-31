@@ -5,6 +5,9 @@ class Goal extends Component {
   render() {
     console.log(reflections)
     const { title, _id, reflections } = this.props.goalContent;
+    if(!title){
+      return <div>loading</div>
+    }
     return (
       <div>
         <h1>

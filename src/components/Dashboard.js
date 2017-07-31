@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
 import Register from './Register';
+import Navbar from './Navbar';
 import '../App.css';
 
 class Dashboard extends Component {
@@ -13,7 +14,7 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.loadGoals();
   }
-  
+
   onChangeGoal = e => {
     this.setState({
       goalName: e.target.value
@@ -32,12 +33,15 @@ class Dashboard extends Component {
   };
 
   renderGoals() {
-    return this.props.appStore.goals.map(goal => <Goal key={goal._id} goalContent={goal} />);
+    return this.props.appStore.goals.map(goal =>
+      <Goal key={goal._id} goalContent={goal} />
+    );
   }
 
   render() {
     return (
       <div className="dashboard">
+        <Navbar />
         <h1>Get ready to rumble</h1>
         <form onSubmit={this.onSubmitGoal} action="">
           <input

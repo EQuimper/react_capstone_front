@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
-import Register from './Register'
+import Landing from './Landing';
 import Navbar from './Navbar';
 
 class Home extends Component {
@@ -9,13 +9,12 @@ class Home extends Component {
   renderApp(){
     if(this.props.isLogged){
       return <Dashboard/>
-    } return <Register/>
+    } return <Landing/>
   }
   
   render(){
     return(
       <div>
-      <Navbar/>
       {this.renderApp()}
       </div>
     )

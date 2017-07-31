@@ -30,6 +30,13 @@ class GoalApi {
       }
     });
   }
+  fetchGoal(id) {
+    return axios.get(`/goals/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    });
+  }
 }
 
 class ReflectionApi {

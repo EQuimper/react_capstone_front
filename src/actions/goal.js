@@ -53,3 +53,21 @@ export function loadGoals() {
     }
   };
 }
+
+export const FETCH_GOAL = 'FETCH_GOAL';
+
+export function fetchGoal(id){
+  return async dispatch => {
+    try {
+      const req = await Goal.fetchGoal(id)
+      console.log('================================')
+      console.log(req)
+      return dispatch({
+        type: FETCH_GOAL,
+        payload: req
+      })
+    } catch (error) {
+      throw error
+    }
+  } 
+}

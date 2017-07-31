@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/user';
+import Navbar from './Navbar';
 import '../App.css';
 
 class Login extends Component {
@@ -26,7 +27,7 @@ class Login extends Component {
 
     try {
       await this.props.login(this.state);
-      this.props.history.push("/")
+      this.props.history.push('/');
     } catch (error) {
       console.log(error);
     }
@@ -38,6 +39,7 @@ class Login extends Component {
     console.log(this.props);
     return (
       <div className="dashboard">
+        <Navbar />
         <h1>Please Login</h1>
         <form onSubmit={this.onSubmitLogin} action="">
           <input

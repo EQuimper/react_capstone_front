@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { register } from '../actions/user';
 import '../App.css';
 import Login from './Login';
+import Navbar from './Navbar';
 
 class Register extends Component {
 
@@ -44,14 +45,7 @@ class Register extends Component {
     console.log(localStorage.getItem("user"));
     return(
       <div className="dashboard">
-      <h1>Please Login</h1>
-      <form onSubmit={this.onSubmitLogin} action="">
-      <input onChange={this.onChangeUser} type="text" placeholder="enter username" value={this.state.username}/>
-      <input onChange={this.onChangeEmail} type="email" placeholder="enter email" value={this.state.email}/>
-      <input onChange={this.onChangePassword} type="text" placeholder="enter password" value={this.state.password}/>
-      <button type="submit">Register</button>
-      </form>
-      <h1>Login</h1>
+      <Navbar/>
       <Login/>
       </div>
     )

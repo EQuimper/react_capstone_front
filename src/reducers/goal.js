@@ -1,4 +1,9 @@
-import { ADD_GOAL, ADD_REFLECTION, LOAD_GOALS } from '../actions/goal';
+import {
+  ADD_GOAL,
+  ADD_REFLECTION,
+  LOAD_GOALS,
+  FETCH_GOAL
+} from '../actions/goal';
 import uuid from 'uuid';
 
 const initialState = {
@@ -42,10 +47,15 @@ export default (state = initialState, action) => {
         )
       };
 
-      case LOAD_GOALS:
-      return{
+    case LOAD_GOALS:
+      return {
         ...state,
-        goals:[...state.goals, ...action.goalsArray ]
+        goals: [...state.goals, ...action.goalsArray]
+      };
+
+    case FETCH_GOAL:
+      return {...state,
+        ['singleGoal']: action.payload.data
       };
 
     default:

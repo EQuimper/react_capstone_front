@@ -7,6 +7,8 @@ import store from './store';
 import './index.css';
 import Home from '../src/components/Home';
 import Login from '../src/components/Login';
+import Landing from '../src/components/Landing';
+import GoalShow from '../src/components/GoalShow';
 import PrivateRoute from './components/PrivateRoute';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,6 +17,7 @@ ReactDOM.render(
   <BrowserRouter>
   <Switch>
   <Route path="/login" component={Login}></Route>
+  <Route path="/goals/:id" component={GoalShow}></Route>
   <PrivateRoute path="/" component={Home}></PrivateRoute>
   </Switch>
   </BrowserRouter>

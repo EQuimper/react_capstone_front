@@ -12,7 +12,9 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.props.loadGoals();
+    if (!this.props.appStore.hasFetched) {
+      this.props.loadGoals();
+    }
   }
 
   onChangeGoal = e => {

@@ -16,11 +16,8 @@ class Goal extends Component {
         {title}
         </Link>
         </h1>
-        <Reflection goalId={_id} />
         <ul>
-        {reflections.map(ref=>
-          <li key={ref.id}>{ref.reflectionContent}</li>
-        )}
+
         </ul>
       </div>
     );

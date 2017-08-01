@@ -2,27 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchGoal } from '../actions/goal';
-
+import Reflection from './Reflection';
 class GoalShow extends Component {
+
+
+
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(this.props.fetchGoal(id));
+    this.props.fetchGoal(id)
   }
 
   render() {
-    const { title, reflections } = this.props.appStore;
-    console.log('reflections', reflections);
-    
-    if(!title){
-      return <div>loading</div>
+    if (!this.props.goal) {
+      return <h1>Loading....</h1>
     }
+    const { title, reflections } = this.props.goal;
+    console.log('reflections', reflections);
+   
     return (
       <div>
         {title}
+      <Reflection goalId={this.props.match.params.id} />
         <ul>
-          {this.props.appStore.reflections.map(ref => {
+          {reflections.map(ref => {
             return (
-              <li>
+              <li key={ref._id}>
                 {ref.reflectionContent}
               </li>
             );
@@ -34,9 +38,9 @@ class GoalShow extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    appStore: state.goal
+    goal: state.goal.goals.find(g => g._id === ownProps.match.params.id),
   };
 }
 

@@ -7,7 +7,8 @@ import {
 import uuid from 'uuid';
 
 const initialState = {
-  goals: []
+  goals: [],
+  hasFetched: false
 };
 
 export default (state = initialState, action) => {
@@ -50,15 +51,28 @@ export default (state = initialState, action) => {
     case LOAD_GOALS:
       return {
         ...state,
-        goals: [...state.goals, ...action.goalsArray]
+        goals: [...state.goals, ...action.goalsArray],
+        hasFetched: true
       };
 
     case FETCH_GOAL:
-      return {...state,
-        ...action.payload.data
+      return {
+        ...state,
+        goals: state.goals.length === 0 ? [
+          ...state.goals,
+          action.payload.data,
+        ] : state.goals.map(goal => 
+          goal._id === action.payload.data._id ?
+            {
+              ...goal,
+              ...action.payload.data
+            } : goal
+        )
       };
 
     default:
       return state;
   }
 };
+
+

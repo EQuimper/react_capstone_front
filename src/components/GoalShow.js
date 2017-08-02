@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchGoal } from '../actions/goal';
 import Reflection from './Reflection';
 import '../App.css';
+
 class GoalShow extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -18,23 +19,54 @@ class GoalShow extends Component {
     console.log('reflections', reflections);
 
     return (
-      <div className="dashboard">
-        {title}
+      <div className="timeline-container">
+        <br />
+        <Link to="/">Back To Index</Link>
         <Reflection goalId={this.props.match.params.id} />
-        <div className="">
-          {reflections.map(ref => {
-            return (
-              <div>
-              <h3>Date Goes Here</h3>
-                <p key={ref._id}>
-                  {ref.reflectionContent}
-                  <br/>
-                </p>
-              </div>
-            );
+
+        <h1 className="project-name">
+          {title}
+        </h1>
+        <div className="timeline">
+          {reflections.map((ref, i) => {
+            switch (i % 2) {
+              case 0:
+                return (
+                  <div className="timeline-item" key={ref._id}>
+                    <div className="timeline-icon">
+                      <i className="fa fa-envelope-o" aria-hidden="true" />
+                    </div>
+                    <div className="timeline-content right">
+                      <h2>Reflection Title</h2>
+                      <p>
+                        {ref.reflectionContent}
+                      </p>
+                      <span className="time-stamp">
+                        {ref.createdAt}
+                      </span>
+                    </div>
+                  </div>
+                );
+              default:
+                return (
+                  <div className="timeline-item" key={ref._id}>
+                    <div className="timeline-icon">
+                      <i className="fa fa-envelope-o" aria-hidden="true" />
+                    </div>
+                    <div className="timeline-content left">
+                      <h2>Reflection Title</h2>
+                      <p>
+                        {ref.reflectionContent}
+                      </p>
+                      <span className="time-stamp">
+                        {ref.createdAt}
+                      </span>
+                    </div>
+                  </div>
+                );
+            }
           })}
         </div>
-        <Link to="/">Back To Index</Link>
       </div>
     );
   }

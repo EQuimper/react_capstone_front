@@ -16,6 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
   <Switch>
+  <Route path="/landing" component={Landing}></Route> 
   <Route path="/login" component={Login}></Route>
   <PrivateRoute path="/goals/:id" component={GoalShow}></PrivateRoute>
   <PrivateRoute path="/" component={Home}>

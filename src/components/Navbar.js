@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../App_nav.css';
 
 class Navbar extends Component {
   clearCache() {

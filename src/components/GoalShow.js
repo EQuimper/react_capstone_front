@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchGoal } from '../actions/goal';
+import { fetchGoal, deleteGoal } from '../actions/goal';
 import Reflection from './Reflection';
 import '../App.css';
 
 class GoalShow extends Component {
+
+
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchGoal(id);
   }
+
+
 
   render() {
     if (!this.props.goal) {
@@ -44,6 +49,7 @@ class GoalShow extends Component {
                       <span className="time-stamp">
                         {ref.createdAt}
                       </span>
+                      <button onClick={(id)=>{console.log('this works')} }>Delete Me</button>
                     </div>
                   </div>
                 );
@@ -78,4 +84,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, { fetchGoal })(GoalShow);
+export default connect(mapStateToProps, { fetchGoal, deleteGoal })(GoalShow);

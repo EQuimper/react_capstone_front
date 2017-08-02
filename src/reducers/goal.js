@@ -2,7 +2,8 @@ import {
   ADD_GOAL,
   ADD_REFLECTION,
   LOAD_GOALS,
-  FETCH_GOAL
+  FETCH_GOAL,
+  DELETE_GOAL
 } from '../actions/goal';
 import uuid from 'uuid';
 
@@ -69,6 +70,12 @@ export default (state = initialState, action) => {
             } : goal
         )
       };
+
+      case DELETE_GOAL:
+      return{
+        ...state,
+        goals: [state.goals.filter(goal => goal._id !== action.goalID)]
+      }
 
     default:
       return state;

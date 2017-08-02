@@ -6,9 +6,6 @@ export function addGoal(goal_name) {
   return async dispatch => {
     try {
       const { data } = await Goal.insertGoal({ goal_name });
-      console.log('=========================');
-      console.log(data);
-      console.log('=========================');
       return dispatch({
         type: ADD_GOAL,
         goal_name,
@@ -70,4 +67,21 @@ export function fetchGoal(id){
       throw error
     }
   } 
+}
+
+export const DELETE_GOAL = 'DELETE_GOAL';
+
+export function deleteGoal(id){
+  return async dispatch => {
+    const goalID = id;
+    try {
+      const req = await Goal.deleteGoal(id)
+      return dispatch({
+        type: DELETE_GOAL,
+        goalID
+      })
+    } catch (error) {
+      throw error
+    }
+  }
 }

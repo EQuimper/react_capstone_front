@@ -37,6 +37,13 @@ class GoalApi {
       }
     });
   }
+  deleteGoal(id) {
+    return axios.delete(`/goals/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    });
+  }
 }
 
 class ReflectionApi {

@@ -10,7 +10,6 @@ class Landing extends Component {
         <Navbar />
         <h3>Welcome</h3>
         <div className="video">
-        <ReactPlayer volume={0} playing url='https://www.youtube.com/watch?v=ZXsQAXx_ao0/'/>
         </div>
       </div>
     );

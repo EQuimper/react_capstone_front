@@ -64,6 +64,14 @@ class ReflectionApi {
       }
     );
   }
+
+    deleteReflection(goalId, id) {
+    return axios.delete(`/goals/${id}/reflections/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    });
+  }
 }
 
 class UserApi {

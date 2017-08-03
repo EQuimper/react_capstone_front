@@ -27,6 +27,7 @@ export function addReflection(ref, goalId) {
         type: ADD_REFLECTION,
         ref,
         goalId,
+        createdAt: res.data.createdAt,
         _id: res.data._id
       });
     } catch (error) {}
@@ -53,35 +54,51 @@ export function loadGoals() {
 
 export const FETCH_GOAL = 'FETCH_GOAL';
 
-export function fetchGoal(id){
+export function fetchGoal(id) {
   return async dispatch => {
     try {
-      const req = await Goal.fetchGoal(id)
-      console.log('================================')
-      console.log(req)
+      const req = await Goal.fetchGoal(id);
+      console.log('================================');
+      console.log(req);
       return dispatch({
         type: FETCH_GOAL,
         payload: req
-      })
+      });
     } catch (error) {
-      throw error
+      throw error;
     }
-  } 
+  };
 }
 
 export const DELETE_GOAL = 'DELETE_GOAL';
 
-export function deleteGoal(id){
+export function deleteGoal(id) {
   return async dispatch => {
-    const goalID = id;
     try {
-      const req = await Goal.deleteGoal(id)
+      await Goal.deleteGoal(id);
       return dispatch({
         type: DELETE_GOAL,
-        goalID
-      })
+        goalID: id
+      });
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
+  };
+}
+
+export const DELETE_REFLECTION = 'DELETE_REFLECTION';
+
+export function deleteReflection(goalId, id) {
+  return async dispatch => {
+    try {
+      await Reflection.deleteReflection(goalId, id);
+      return dispatch({
+        type: DELETE_REFLECTION,
+        goalId,
+        refId: id
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
 }

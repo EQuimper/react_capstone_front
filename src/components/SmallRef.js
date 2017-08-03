@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SmallRef extends Component {
   
     deleteReflection = id => {
-    this.props.deleteRelection(this.props.goalId, id);
+    this.props.deleteReflection(this.props.goalId, id);
   };
 
   

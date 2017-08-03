@@ -8,7 +8,10 @@ import '../App.css';
 
 class GoalShow extends Component {
 
-
+state ={
+  reflectionText: '',
+  isChanged: false
+}
 
   componentDidMount() {
     const { id } = this.props.match.params;

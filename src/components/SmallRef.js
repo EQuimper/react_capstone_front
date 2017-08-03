@@ -4,6 +4,7 @@ class SmallRef extends Component {
   
     deleteReflection = id => {
     this.props.deleteReflection(this.props.goalId, id);
+      console.log(id)
   };
 
   
@@ -15,8 +16,8 @@ class SmallRef extends Component {
         <div className="timeline-icon">
           <i className="fa fa-envelope-o" aria-hidden="true" />
         </div>
-        <div className="timeline-content right">
-          <h2>Reflection Title</h2>
+        <div className={`timeline-content ${this.props.leftright}`}>
+          <h2>{reflection.title}</h2>
           <p>
             {reflection.reflectionContent}
           </p>

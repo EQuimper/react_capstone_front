@@ -7,6 +7,9 @@ import SmallRef from './SmallRef';
 import '../App.css';
 
 class GoalShow extends Component {
+
+
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchGoal(id);
@@ -22,6 +25,8 @@ class GoalShow extends Component {
       return <h1>Loading....</h1>;
     }
     const { title, reflections } = this.props.goal;
+    const right = 'right';
+    const left = 'left';
     console.log('reflections', reflections);
 
     return (
@@ -44,24 +49,18 @@ class GoalShow extends Component {
                     reflection={ref}
                     goalId={this.props.match.params.id}
                     deleteReflection={this.props.deleteReflection}
+                    leftright={"right"}
                   />
                 );
               default:
-                return (
-                  <div className="timeline-item" key={ref._id}>
-                    <div className="timeline-icon">
-                      <i className="fa fa-envelope-o" aria-hidden="true" />
-                    </div>
-                    <div className="timeline-content left">
-                      <h2>Reflection Title</h2>
-                      <p>
-                        {ref.reflectionContent}
-                      </p>
-                      <span className="time-stamp">
-                        {new Date(ref.createdAt).toDateString()}
-                      </span>
-                    </div>
-                  </div>
+               return (
+                  <SmallRef
+                    key={ref._id}
+                    reflection={ref}
+                    goalId={this.props.match.params.id}
+                    deleteReflection={this.props.deleteReflection}
+                    leftright={"left"}
+                  />
                 );
             }
           })}

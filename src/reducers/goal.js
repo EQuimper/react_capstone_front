@@ -38,6 +38,7 @@ export default (state = initialState, action) => {
                   ...goal,
                   reflections: [
                     {
+                      title: action.title,
                       reflectionContent: action.ref,
                       _id: action._id,
                       goal_id: action.goalId,

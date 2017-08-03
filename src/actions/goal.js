@@ -19,12 +19,13 @@ export function addGoal(goal_name) {
 
 export const ADD_REFLECTION = 'ADD_REFLECTION';
 
-export function addReflection(ref, goalId) {
+export function addReflection(title, ref, goalId) {
   return async dispatch => {
     try {
-      const res = await Reflection.insertReflection(ref, goalId);
+      const res = await Reflection.insertReflection(title, ref, goalId);
       return dispatch({
         type: ADD_REFLECTION,
+        title,
         ref,
         goalId,
         createdAt: res.data.createdAt,
@@ -58,8 +59,6 @@ export function fetchGoal(id) {
   return async dispatch => {
     try {
       const req = await Goal.fetchGoal(id);
-      console.log('================================');
-      console.log(req);
       return dispatch({
         type: FETCH_GOAL,
         payload: req
@@ -91,7 +90,7 @@ export const DELETE_REFLECTION = 'DELETE_REFLECTION';
 export function deleteReflection(goalId, id) {
   return async dispatch => {
     try {
-      await Reflection.deleteReflection(goalId, id);
+      await Goal.deleteReflection(goalId, id);
       return dispatch({
         type: DELETE_REFLECTION,
         goalId,

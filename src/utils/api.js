@@ -44,6 +44,14 @@ class GoalApi {
       }
     });
   }
+
+  deleteReflection(goalId, id) {
+    return axios.delete(`/goals/${goalId}/reflections/${id}`, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    });
+  }
 }
 
 class ReflectionApi {
@@ -51,11 +59,12 @@ class ReflectionApi {
     this.path = '/reflections';
   }
 
-  insertReflection(data, goalId) {
+  insertReflection(title, refContent, goalId) {
     return axios.post(
       `${this.path}/${goalId}`,
       {
-        reflectionContent: data
+        title: title,
+        reflectionContent: refContent
       },
       {
         headers: {
@@ -63,14 +72,6 @@ class ReflectionApi {
         }
       }
     );
-  }
-
-    deleteReflection(goalId, id) {
-    return axios.delete(`/goals/${id}/reflections/${id}`, {
-      headers: {
-        authorization: localStorage.getItem('token')
-      }
-    });
   }
 }
 

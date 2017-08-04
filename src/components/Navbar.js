@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux'
+import {logout} from '../actions/user';
 import '../App_nav.css';
 
 class Navbar extends Component {
-  clearCache() {
+
+
+  clearCache = () => {
     console.log('this worked');
-    window.localStorage.clear();
-    window.location.reload();
+    localStorage.removeItem('token')
+    this.props.logout();
   }
 
   render() {
@@ -29,4 +33,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default connect(null, {logout})(Navbar);

@@ -39,7 +39,6 @@ class Login extends Component {
     console.log(this.props);
     return (
       <div className="dashboard">
-        <Navbar />
         <h1>Please Login</h1>
         <form onSubmit={this.onSubmitLogin} action="">
           <input
@@ -50,7 +49,7 @@ class Login extends Component {
           />
           <input
             onChange={this.onChangePassword}
-            type="text"
+            type="password"
             placeholder="enter password"
             value={this.state.password}
           />

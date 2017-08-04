@@ -47,7 +47,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <Navbar />
         <h1>Get ready to rumble</h1>
         <form onSubmit={this.onSubmitGoal} action="">
           <input

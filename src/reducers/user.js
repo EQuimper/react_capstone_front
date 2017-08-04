@@ -1,9 +1,12 @@
-import {REGISTER
-  , REGISTER_SUCCESS
-  , REGISTER_ERROR
-  , LOGIN
-  , LOGIN_ERROR
-  , LOGIN_SUCCESS} from '../actions/user';
+import {
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
+  LOGIN,
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  LOGOUT
+} from '../actions/user';
 const info = localStorage.getItem('token');
 
 const initialState = {
@@ -11,16 +14,15 @@ const initialState = {
   loading: false,
   token: info,
   error: null
-}
-
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'REGISTER':
       return {
         ...state,
-        loading: true,
-      }
+        loading: true
+      };
     case 'REGISTER_SUCCESS':
       return {
         ...state,
@@ -28,19 +30,19 @@ export default (state = initialState, action) => {
         isLogged: true,
         info: action.data.token
       };
-      
+
     case 'REGISTER_ERROR':
       return {
         ...state,
         loading: false,
         error: action.error
-      }
+      };
 
-          case 'LOGIN':
+    case 'LOGIN':
       return {
         ...state,
-        loading: true,
-      }
+        loading: true
+      };
     case 'LOGIN_SUCCESS':
       return {
         ...state,
@@ -53,7 +55,12 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error
-      }
+      };
+
+    case 'LOGOUT':
+    return{
+      ...initialState
+    }
     default:
       return state;
   }

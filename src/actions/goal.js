@@ -101,3 +101,23 @@ export function deleteReflection(goalId, id) {
     }
   };
 }
+
+export const UPDATE_REFLECTION = 'UPDATE_REFLECTION';
+
+export function updateReflection(goalId, id, update){
+  return async dispatch => {
+    try {
+      await Goal.updateReflection(goalId, id, update);
+      return dispatch({
+        type: UPDATE_REFLECTION,
+        goalId,
+        id,
+        updateContent: update
+      })
+    } catch (error) {
+       throw error;
+    }
+  }
+}
+
+

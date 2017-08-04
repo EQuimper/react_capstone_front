@@ -7,7 +7,6 @@ class Landing extends Component {
   render() {
     return (
       <div className="dashboard">
-        <Navbar />
         <h3>Welcome</h3>
         <div className="video">
         </div>

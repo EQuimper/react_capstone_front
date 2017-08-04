@@ -52,6 +52,14 @@ class GoalApi {
       }
     });
   }
+
+  updateReflection(goalId, id, update) {
+    return axios.patch(`/goals/${goalId}/reflections/${id}`, update, {
+      headers: {
+        authorization: localStorage.getItem('token')
+      }
+    });
+  }
 }
 
 class ReflectionApi {

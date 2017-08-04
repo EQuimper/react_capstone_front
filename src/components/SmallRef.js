@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateReflection} from '../actions/goal';
 
 class SmallRef extends Component {
+  
   state = {
     edit: false,
-    oldRef: '',
-    newRef: ''
+    content: this.props.reflection.reflectionContent 
   };
+
+  onChange = (e) => {    
+    this.setState({
+      content: e.target.value
+    })
+  }
+
+    updateReflection = () => {
+    this.props.updateReflection(this.props.goalId, this.props.reflection._id, {reflectionContent: this.state.content});
+    this.setState({
+      edit: false
+    })
+  };
+
+
 
   deleteReflection = id => {
     this.props.deleteReflection(this.props.goalId, id);
@@ -30,20 +47,26 @@ class SmallRef extends Component {
           <h2>
             {reflection.title}
           </h2>
-          <p>
-            {reflection.reflectionContent}
-          </p>
+          {this.state.edit
+            ? <input value={this.state.content} onChange={this.onChange}/>
+            : <p>
+                {this.state.content}
+              </p>
+            }
           <span className="time-stamp">
             {new Date(reflection.createdAt).toDateString()}
           </span>
+          <br/>
+          <br/>
           <button onClick={() => this.deleteReflection(reflection._id)}>
             Delete Me
           </button>
           <button onClick={this.changeRef}>Edit Me</button>
+          <button onClick={this.updateReflection}>Update me</button>
         </div>
       </div>
     );
   }
 }
 
-export default SmallRef;
+export default connect(null, {updateReflection})(SmallRef);

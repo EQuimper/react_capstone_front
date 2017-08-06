@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/user';
 import Navbar from './Navbar';
+import { Input, Button } from 'material-ui';
+import 'typeface-roboto'
 import '../App.css';
 
 class Login extends Component {
@@ -41,19 +43,29 @@ class Login extends Component {
       <div className="dashboard">
         <h1>Please Login</h1>
         <form onSubmit={this.onSubmitLogin} action="">
-          <input
-            onChange={this.onChangeUser}
-            type="text"
-            placeholder="enter username"
-            value={this.state.username}
-          />
-          <input
-            onChange={this.onChangePassword}
-            type="password"
-            placeholder="enter password"
-            value={this.state.password}
-          />
-          <button type="submit">Register</button>
+          <div>
+            <Input
+              onChange={this.onChangeUser}
+              type="text"
+              placeholder="enter email"
+              value={this.state.username}
+            />
+          </div>
+          <br/>
+          <div>
+            <Input
+              onChange={this.onChangePassword}
+              type="password"
+              placeholder="enter password"
+              value={this.state.password}
+            />
+          </div>
+          <br/>
+          <div>
+            <Button raised color="primary" type="submit">
+              Login
+            </Button>
+          </div>
         </form>
       </div>
     );

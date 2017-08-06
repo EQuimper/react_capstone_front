@@ -259,3 +259,8 @@ h1, h2, h3, h4 {
 .video.video-stream.html5-main-video {
   text-align: center;
 }
+
+.btn {
+  border: 1px solid black;
+  border-radius: 3px;
+}

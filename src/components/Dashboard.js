@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
 import Register from './Register';
-import Navbar from './Navbar';
+import Grid from 'material-ui/Grid';
 import '../App.css';
 
 class Dashboard extends Component {
@@ -46,20 +46,27 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard">
-        <h1>Get ready to rumble</h1>
-        <form onSubmit={this.onSubmitGoal} action="">
-          <input
-            onChange={this.onChangeGoal}
-            type="text"
-            placeholder="add a goal"
-            value={this.state.goalName}
-          />
-          <button type="submit">Submit a goal</button>
-        </form>
-        <div className="goal-container">
-          {this.renderGoals()}
-        </div>
+      <div className="main">
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6}>
+            <h1>Get ready to rumble</h1>
+            <form onSubmit={this.onSubmitGoal} action="">
+              <input
+                onChange={this.onChangeGoal}
+                type="text"
+                placeholder="add a goal"
+                value={this.state.goalName}
+              />
+              <button type="submit">Submit a goal</button>
+            </form>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className="goal-container dashboard">
+              {this.renderGoals()}
+            </div>
+          </Grid>
+        </Grid>
       </div>
     );
   }

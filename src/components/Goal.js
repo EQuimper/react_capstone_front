@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Reflection from './Reflection';
 import { Link } from 'react-router-dom';
 
+
 class Goal extends Component {
   render() {
     console.log(reflections);

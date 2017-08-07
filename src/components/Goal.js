@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Reflection from './Reflection';
 import { Link } from 'react-router-dom';
-
+import { Card, CardHeader } from 'material-ui';
 
 class Goal extends Component {
   render() {
@@ -12,11 +12,16 @@ class Goal extends Component {
     }
     return (
       <div className="goal">
-        <h1>
-          <Link to={`/goals/${_id}`}>
-            {title}
-          </Link>
-        </h1>
+        <Card>
+          <h1>
+          <CardHeader title={title}>
+          
+          </CardHeader>
+            <Link to={`/goals/${_id}`}>
+              See More
+            </Link>
+          </h1>
+        </Card>
       </div>
     );
   }

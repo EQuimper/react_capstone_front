@@ -72,9 +72,10 @@ class GoalShow extends Component {
         </Grid>
                 <Grid className="right">
           <Button raised secondary={true} onClick={this.deleteGoal}>delete me!</Button>
-          <Button raised>
-            {' '}<Link to="/">Back To Index</Link>
+          <Link to="/">
+                    <Button raised>Back Home
           </Button>
+          </Link>
         </Grid>
       </div>
     );

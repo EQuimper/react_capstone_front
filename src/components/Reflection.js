@@ -57,8 +57,9 @@ class Reflection extends Component {
               value={this.state.reflectionContent}
             />
           </div>
+          <br/>
           <div />
-          <Button type="submit">submit a reflection</Button>
+          <Button raised secondary={true} type="submit">submit a reflection</Button>
         </form>
         <div />
       </div>

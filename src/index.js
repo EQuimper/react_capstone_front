@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import NavBar from './components/Navbar';
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
+import Register from './components/Register';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -26,7 +27,7 @@ ReactDOM.render(
           <Route path="/landing" component={Landing} />
           <Route path="/login" component={Login} />
           <PrivateRoute path="/goals/:id" component={GoalShow} />
-                    <PrivateRoute path="/test" component={App} />
+                    <PrivateRoute path="/register" component={Register} />
           <PrivateRoute path="/" component={Home} />
         </Switch>
       </div>

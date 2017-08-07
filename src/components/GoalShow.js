@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { fetchGoal, deleteGoal, deleteReflection } from '../actions/goal';
 import Reflection from './Reflection';
 import SmallRef from './SmallRef';
+import { Input, Button, Grid } from 'material-ui';
 import '../App.css';
 
 class GoalShow extends Component {
-
-state ={
-  reflectionText: '',
-  isChanged: false
-}
+  state = {
+    reflectionText: '',
+    isChanged: false
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -35,39 +35,47 @@ state ={
     return (
       <div className="timeline-container">
         <br />
-        <button onClick={this.deleteGoal}>delete me!</button>
-        <Link to="/">Back To Index</Link>
-        <Reflection goalId={this.props.match.params.id} />
+        <Grid className="right">
+          <Button onClick={this.deleteGoal}>delete me!</Button>
+          <Button>
+            {' '}<Link to="/">Back To Index</Link>
+          </Button>
+        </Grid>
+        <Grid>
+          <Reflection goalId={this.props.match.params.id} />
+        </Grid>
 
-        <h1 className="project-name">
-          {title}
-        </h1>
-        <div className="timeline">
-          {reflections.map((ref, i) => {
-            switch (i % 2) {
-              case 0:
-                return (
-                  <SmallRef
-                    key={ref._id}
-                    reflection={ref}
-                    goalId={this.props.match.params.id}
-                    deleteReflection={this.props.deleteReflection}
-                    leftright={"right"}
-                  />
-                );
-              default:
-               return (
-                  <SmallRef
-                    key={ref._id}
-                    reflection={ref}
-                    goalId={this.props.match.params.id}
-                    deleteReflection={this.props.deleteReflection}
-                    leftright={"left"}
-                  />
-                );
-            }
-          })}
-        </div>
+        <Grid>
+          <h1 className="project-name">
+            {title}
+          </h1>
+          <div className="timeline">
+            {reflections.map((ref, i) => {
+              switch (i % 2) {
+                case 0:
+                  return (
+                    <SmallRef
+                      key={ref._id}
+                      reflection={ref}
+                      goalId={this.props.match.params.id}
+                      deleteReflection={this.props.deleteReflection}
+                      leftright={'right'}
+                    />
+                  );
+                default:
+                  return (
+                    <SmallRef
+                      key={ref._id}
+                      reflection={ref}
+                      goalId={this.props.match.params.id}
+                      deleteReflection={this.props.deleteReflection}
+                      leftright={'left'}
+                    />
+                  );
+              }
+            })}
+          </div>
+        </Grid>
       </div>
     );
   }

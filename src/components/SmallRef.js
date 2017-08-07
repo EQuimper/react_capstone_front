@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateReflection} from '../actions/goal';
+import { Input, Button, Grid } from 'material-ui';
 
 class SmallRef extends Component {
   
@@ -48,7 +49,7 @@ class SmallRef extends Component {
             {reflection.title}
           </h2>
           {this.state.edit
-            ? <input value={this.state.content} onChange={this.onChange}/>
+            ? <Input value={this.state.content} onChange={this.onChange}/>
             : <p>
                 {this.state.content}
               </p>
@@ -58,11 +59,11 @@ class SmallRef extends Component {
           </span>
           <br/>
           <br/>
-          <button onClick={() => this.deleteReflection(reflection._id)}>
+          <Button onClick={() => this.deleteReflection(reflection._id)}>
             Delete Me
-          </button>
-          <button onClick={this.changeRef}>Edit Me</button>
-          <button onClick={this.updateReflection}>Update me</button>
+          </Button>
+          <Button onClick={this.changeRef}>Edit Me</Button>
+          <Button onClick={this.updateReflection}>Update me</Button>
         </div>
       </div>
     );

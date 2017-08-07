@@ -48,7 +48,7 @@ class Dashboard extends Component {
     return (
       <div className="main">
         <Grid container spacing={24}>
-          <Grid item xs={12}>
+          <Grid className="dashboard" xs={12}>
             <h1>Get ready to rumble</h1>
             <form onSubmit={this.onSubmitGoal} action="">
               <div>

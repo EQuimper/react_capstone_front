@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addReflection } from '../actions/goal';
-import { Input, Button } from 'material-ui';
+import { Input, Button, TextField } from 'material-ui';
 
 class Reflection extends Component {
   state = {
@@ -51,13 +51,13 @@ class Reflection extends Component {
             <Input
               onChange={this.onChangeRef}
               type="text"
+              multiLine
+              rows={3}
               placeholder="add a reflection"
               value={this.state.reflectionContent}
             />
           </div>
-          <div>
-          
-          </div>
+          <div />
           <Button type="submit">submit a reflection</Button>
         </form>
         <div />

@@ -5,6 +5,7 @@ import { fetchGoal, deleteGoal, deleteReflection } from '../actions/goal';
 import Reflection from './Reflection';
 import SmallRef from './SmallRef';
 import { Input, Button, Grid } from 'material-ui';
+
 import '../App.css';
 
 class GoalShow extends Component {
@@ -35,16 +36,9 @@ class GoalShow extends Component {
     return (
       <div className="timeline-container">
         <br />
-        <Grid className="right">
-          <Button onClick={this.deleteGoal}>delete me!</Button>
-          <Button>
-            {' '}<Link to="/">Back To Index</Link>
-          </Button>
-        </Grid>
-        <Grid>
+        <Grid className="dashboard">
           <Reflection goalId={this.props.match.params.id} />
         </Grid>
-
         <Grid>
           <h1 className="project-name">
             {title}
@@ -75,6 +69,12 @@ class GoalShow extends Component {
               }
             })}
           </div>
+        </Grid>
+                <Grid className="right">
+          <Button raised secondary={true} onClick={this.deleteGoal}>delete me!</Button>
+          <Button raised>
+            {' '}<Link to="/">Back To Index</Link>
+          </Button>
         </Grid>
       </div>
     );

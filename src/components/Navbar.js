@@ -19,12 +19,12 @@ class Navbar extends Component {
         <nav>
           <ul>
             <li>
-              <RaisedButton>
+              <RaisedButton primary={true} >
                 <Link to="/login">Login</Link>
               </RaisedButton>
             </li>
             <li>
-              <RaisedButton >
+              <RaisedButton secondary={true}>
                 <Link onClick={this.clearCache} to="/landing">
                   Logout
                 </Link>

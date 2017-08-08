@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/user';
-import { Input, Button } from 'material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
 import 'typeface-roboto'
 import '../App.css';
 
@@ -43,7 +45,7 @@ class Login extends Component {
         <h1>Please Login</h1>
         <form onSubmit={this.onSubmitLogin} action="">
           <div>
-            <Input
+            <TextField
               onChange={this.onChangeUser}
               type="text"
               placeholder="enter email"
@@ -52,7 +54,7 @@ class Login extends Component {
           </div>
           <br/>
           <div>
-            <Input
+            <TextField
               onChange={this.onChangePassword}
               type="password"
               placeholder="enter password"
@@ -61,9 +63,9 @@ class Login extends Component {
           </div>
           <br/>
           <div>
-            <Button raised color="primary" type="submit">
+            <RaisedButton raised color="primary" type="submit">
               Login
-            </Button>
+            </RaisedButton>
           </div>
         </form>
       </div>

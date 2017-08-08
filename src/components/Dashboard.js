@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { addGoal, loadGoals } from '../actions/goal';
 import Goal from './Goal';
 import Register from './Register';
-import { Grid, Input, Button } from 'material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 import '../App.css';
 
 class Dashboard extends Component {
@@ -47,12 +48,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="main">
-        <Grid container spacing={24}>
-          <Grid className="dashboard" xs={12}>
             <h1>Get ready to rumble</h1>
             <form onSubmit={this.onSubmitGoal} action="">
               <div>
-                <Input
+                <TextField
                   onChange={this.onChangeGoal}
                   type="text"
                   placeholder="add a goal"
@@ -60,17 +59,14 @@ class Dashboard extends Component {
                 />
               </div>
               <div>
-                <Button type="submit">Submit a goal</Button>
+                <RaisedButton type="submit">Submit a goal</RaisedButton>
               </div>
             </form>
-          </Grid>
 
-          <Grid item xs={12}>
+
             <div className="goal-container dashboard">
               {this.renderGoals()}
             </div>
-          </Grid>
-        </Grid>
       </div>
     );
   }

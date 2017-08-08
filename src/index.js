@@ -5,11 +5,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-// import Home from '../src/components/Home';
-// import Login from '../src/components/Login';
+import Home from '../src/components/Home';
+import Login from '../src/components/Login';
 import Landing from './components/Landing';
 // import GoalShow from '../src/components/GoalShow';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import Navbar from './components/Navbar';
 import registerServiceWorker from './registerServiceWorker';
 // import App from './App';
@@ -27,6 +27,8 @@ ReactDOM.render(
           <Navbar />
           <Switch>
             <Route path="/landing" component={Landing} />
+            <Route path="/login" component={Login}></Route>
+            <PrivateRoute path="/" component={Home}></PrivateRoute>
           </Switch>
         </div>
       </BrowserRouter>

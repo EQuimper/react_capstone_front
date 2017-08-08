@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../actions/user';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { logout } from '../actions/user';
 import '../App_nav.css';
 
 class Navbar extends Component {

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
 import Landing from './Landing';
-import Navbar from './Navbar';
 
 class Home extends Component {
 
@@ -11,7 +10,7 @@ class Home extends Component {
       return <Dashboard/>
     } return <Landing/>
   }
-  
+
   render(){
     return(
       <div>

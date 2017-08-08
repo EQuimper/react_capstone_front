@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/user';
-import Navbar from './Navbar';
 import { Input, Button } from 'material-ui';
 import 'typeface-roboto'
 import '../App.css';

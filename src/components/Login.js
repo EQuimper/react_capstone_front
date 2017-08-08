@@ -46,6 +46,7 @@ class Login extends Component {
         <form onSubmit={this.onSubmitLogin} action="">
           <div>
             <TextField
+              id="email"
               onChange={this.onChangeUser}
               type="text"
               placeholder="enter email"
@@ -55,6 +56,7 @@ class Login extends Component {
           <br/>
           <div>
             <TextField
+              id="password"
               onChange={this.onChangePassword}
               type="password"
               placeholder="enter password"
@@ -63,7 +65,7 @@ class Login extends Component {
           </div>
           <br/>
           <div>
-            <RaisedButton raised color="primary" type="submit">
+            <RaisedButton color="primary" type="submit">
               Login
             </RaisedButton>
           </div>

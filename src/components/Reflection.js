@@ -51,15 +51,24 @@ class Reflection extends Component {
             <Input
               onChange={this.onChangeRef}
               type="text"
-              multiLine
               rows={3}
               placeholder="add a reflection"
               value={this.state.reflectionContent}
             />
           </div>
-          <br/>
+          <br />
+
+            <TextField
+            placeholder="multi line here"
+              multiline={true}
+              rows={2}
+              rowsMax={4}
+            />
+
           <div />
-          <Button raised secondary={true} type="submit">submit a reflection</Button>
+          <Button raised secondary={true} type="submit">
+            submit a reflection
+          </Button>
         </form>
         <div />
       </div>

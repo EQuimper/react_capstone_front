@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../actions/user';
 import '../App.css';
-import { Input, Button } from 'material-ui';
+import { Input, Button, TextField } from 'material-ui';
 
 class Register extends Component {
   state = {

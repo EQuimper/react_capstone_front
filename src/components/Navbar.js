@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/user';
-import { Input, Button } from 'material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import '../App_nav.css';
 
 class Navbar extends Component {
@@ -18,21 +19,18 @@ class Navbar extends Component {
         <nav>
           <ul>
             <li>
-              <Button raised color="primary">
+              <RaisedButton>
                 <Link to="/login">Login</Link>
-              </Button>
+              </RaisedButton>
             </li>
             <li>
-              <Button raised color="secondary">
+              <RaisedButton >
                 <Link onClick={this.clearCache} to="/landing">
                   Logout
                 </Link>
-              </Button>
+              </RaisedButton>
             </li>
             <li>
-              <Button raised color="default">
-                <Link to="/register">Register</Link>
-              </Button>
             </li>
           </ul>
         </nav>

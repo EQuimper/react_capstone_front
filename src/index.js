@@ -15,20 +15,13 @@ import registerServiceWorker from './registerServiceWorker';
 import App from './App';
 import Register from './components/Register';
 
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <NavBar />
+        <Navbar />
         <Switch>
           <Route path="/landing" component={Landing} />
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/goals/:id" component={GoalShow} />
-                    <PrivateRoute path="/register" component={Register} />
-          <PrivateRoute path="/" component={Home} />
         </Switch>
       </div>
     </BrowserRouter>

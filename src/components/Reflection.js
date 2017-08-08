@@ -58,13 +58,6 @@ class Reflection extends Component {
           </div>
           <br />
 
-            <TextField
-            placeholder="multi line here"
-              multiline={true}
-              rows={2}
-              rowsMax={4}
-            />
-
           <div />
           <Button raised secondary={true} type="submit">
             submit a reflection

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -11,7 +11,10 @@ class Navbar extends Component {
     console.log('this worked');
     localStorage.removeItem('token');
     this.props.logout();
+    this._goTo('/landing');
   };
+
+  _goTo = route => this.props.history.push(route);
 
   render() {
     return (
@@ -19,15 +22,13 @@ class Navbar extends Component {
         <nav>
           <ul>
             <li>
-              <RaisedButton primary={true} >
-                <Link to="/login">Login</Link>
+              <RaisedButton primary={true} onClick={() => this._goTo('/login')}>
+                Login
               </RaisedButton>
             </li>
             <li>
-              <RaisedButton secondary={true}>
-                <Link onClick={this.clearCache} to="/landing">
-                  Logout
-                </Link>
+              <RaisedButton secondary={true} onClick={this.clearCache}>
+                Logout
               </RaisedButton>
             </li>
             <li>
@@ -39,4 +40,4 @@ class Navbar extends Component {
   }
 }
 
-export default connect(null, { logout })(Navbar);
+export default withRouter(connect(null, { logout })(Navbar));
